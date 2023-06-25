@@ -2,7 +2,7 @@
 
 ## Odd-Duck
 
-I build an app with the purpose of presenting three different product images to employees to vote on. After 25 rounds of voting, the results of votes and views for each product image will be displayed. The product with the most votes will determine the next product creation for the company.
+I built an app with the purpose of presenting three different product images to employees to vote on. After 25 rounds of voting, the results of votes and views for each product image will be displayed. The product with the most votes will determine the next product creation for the company.
 
 ### Author: Melodic
 
