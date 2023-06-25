@@ -1,8 +1,8 @@
-# Class 201 - Lab 11
+# Class 201 - Lab 11, 12
 
 ## Odd-Duck
 
-I built an app with the purpose of presenting three different product images to employees to vote on. After 25 rounds of voting, the results of votes and views for each product image will be displayed. The product with the most votes will determine the next product creation for the company.
+I built an app with the purpose of presenting three different product images to employees to vote on. After 25 rounds of voting, the results of votes and views for each product image will be displayed on a bar chart. The product with the most votes will determine the next product creation for the company.
 
 ### Author: Melodic
 
@@ -11,12 +11,25 @@ I built an app with the purpose of presenting three different product images to 
 * [Link to deployed page](https://melodicxp.github.io/odd-duck/)
 * [In Class Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/inclass-demo)
 * [In Class Grid Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/grid-demo)
+* [In Class Demo - Class 12](https://github.com/codefellows/seattle-code-201d100/tree/main/class-12/inclass-demo)
+* [In Class Chart Demo - Class 12](https://github.com/codefellows/seattle-code-201d100/tree/main/class-12/chart-demo)
+* [Responsive Chart Example - ChartJS CodePen](https://codepen.io/chartjs/pen/YVWZbz)
+* [Responsive Charts](https://www.chartjs.org/docs/latest/configuration/responsive.html#important-note)
 
 ### Lighthouse Accessibility Report Score
 
+* July 4, 2023 [LightHouse Accessibility Score](img/Lighthouse07042023.jpg)
 * June 27, 2023 [LightHouse Accessibility Score](img/Lighthouse06272023.jpg);
 
 ### Reflections and Comments
+
+#### July 4, 2023  
+
+* I learned how to integrate ChartJS into projects by using canvas element in HTML with an ID, and then within Javascript use DOM to manipulate it. Within HTML must include script tag in order to use ChartJS library.
+* To improve readability and understanding chartObj was separated into smaller subsections.
+* How to apply styling to elements using DOM, (only wanted for chart to appear once all voting rounds completed).
+
+#### June 27, 2023
 
 * I learned quite a bit about innerHTML and outerHTML and how to use it to manipulate the text elements such as applying 'bold' using JavaConsider.
 * I learned about grid and how to set he minimum and maxiumum sizes for columns and rows with grid-auto-columns and grid-auto-rows.
