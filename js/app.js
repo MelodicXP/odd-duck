@@ -106,7 +106,6 @@ function handleImgClick(event) {
 
   // Decrement voting round
   votingRounds--;
-  console.log(votingRounds);
   roundsLeft.textContent = `There are ${votingRounds} voting rounds left!`;
 
   // Once voting rounds equal zero, remove ability to click
