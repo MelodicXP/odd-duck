@@ -8,6 +8,7 @@ I built an app with the purpose of presenting three different product images to 
 
 ### Links and Resources
 
+* [Link to deployed page](https://melodicxp.github.io/odd-duck/)
 * [In Class Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/inclass-demo)
 * [In Class Grid Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/grid-demo)
 
