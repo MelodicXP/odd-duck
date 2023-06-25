@@ -8,12 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Oswald:wght@600&family=Roboto+Condensed:wght@300&family=Roboto:wght@300&family=Yellowtail&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
   <title>Product Votes</title>
 </head>
 <body>
 
   <header class="grid-container">
-    <div class="grid-item1" style="background-color: lightcoral">
+    <div class="grid-item1" style="background-color: #f08080">
       <h1>Vote for our next creation! Click a product below to cast your vote!</h1>
       <p id="show-rounds-left"></p>
     </div>
@@ -21,29 +22,31 @@
 
   <main class="grid-container2">
 
-    <div class="grid-item2" style="background-color: lightskyblue">
+    <div class="grid-item2" style="background-color: #87cefa">
       <h2 id="results-header"></h2>
-      <ul id="results-container"></ul>
+      <div class="chart-container">
+        <canvas id="my-chart"></canvas>
+      </div>
       <button type="button" id="show-results-btn">View Results</button>
       <p>(results revealed after voting rounds completed)</p>
     </div>
 
     <section class="grid-item3" id="image-container">
-      <div style="background-color: yellow">
+      <div style="background-color: #ffff00">
         <figure>
           <img id="image-one" src="" alt="">
           <figcaption></figcaption>
         </figure>
       </div>
 
-      <div style="background-color: lightblue">
+      <div style="background-color: #add8e6">
         <figure>
           <img id="image-two" src="" alt="">
           <figcaption></figcaption>
         </figure>    
       </div>
 
-      <div style="background-color: aquamarine">
+      <div style="background-color: #7fffd4">
         <figure>
         <img id="image-three" src="" alt="">
         <figcaption></figcaption>
@@ -52,7 +55,7 @@
       
     </section>
 
-    <div id="message-team" class="grid-item4" style="background-color: burlywood;">
+    <div id="message-team" class="grid-item4" style="background-color: #deb887;">
       <p>Hello Team! </p>
       <p>
         We need your input! Vote by clicking on one of the three product images displayed. The product with the most votes will determine our next creation! Hurry and cast your vote as there are only 25 voting rounds!
@@ -65,7 +68,7 @@
   </main>
 
   <footer class="grid-container3">
-    <div class="grid-item7" style="background-color: violet;">Author: Melodic</div>
+    <div class="grid-item7" style="background-color: #ee82ee;">Author: Melodic</div>
   </footer>
 
   <script src="js/app.js"></script>
