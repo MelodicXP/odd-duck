@@ -60,6 +60,11 @@
   text-align: center;
   margin-top: 4px;
 }
+
+.grid-item2 div {
+  border: none;
+}
+
 .grid-item3 {
   grid-area: img;
   display: grid;
@@ -167,3 +172,5 @@ img:hover {
 footer {
   text-align: center;
 }
+
+
