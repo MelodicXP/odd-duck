@@ -1,4 +1,4 @@
-# Class 201 - Lab 11, 12, 13
+# Class 201 - Lab 11, 12, 13, 15b
 
 ## Odd-Duck
 
@@ -19,11 +19,16 @@ I built an app with the purpose of presenting three different product images to 
 
 ### Lighthouse Accessibility Report Score
 
-* July 7, 2026 [LightHouse Accessibility Score](img/Lighthouse07072023.jpg)
+* July 11, 2023 [LightHouse Accessibility Score](img/Lighthouse07112023.jpg)
+* July 7, 2023 [LightHouse Accessibility Score](img/Lighthouse07072023.jpg)
 * July 4, 2023 [LightHouse Accessibility Score](img/Lighthouse07042023.jpg)
 * June 27, 2023 [LightHouse Accessibility Score](img/Lighthouse06272023.jpg)
 
 ### Reflections and Comments
+
+#### July 11, 2023
+
+* No changes made as per lab 15b requirements.
 
 #### July 7, 2023  
 
