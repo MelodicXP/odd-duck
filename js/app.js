@@ -124,7 +124,7 @@ function renderImages(){
   let imageOneIndex, imageTwoIndex, imageThreeIndex;
 
   // Generate 6 random numbers and check if numbers are unique
-  while(indexArray.length < 6) {
+  while (indexArray.length < 6) {
     let randomNumber = randomIndexGenerator();
     if (!indexArray.includes(randomNumber) ) {
       indexArray.push(randomNumber);
@@ -163,8 +163,8 @@ function handleImgClick(event) {
   let imageClicked = event.target.title;
 
   // Increase vote on image clicked
-  for(let i = 0; i < productArray.length; i++) {
-    if(imageClicked === productArray[i].name){
+  for (let i = 0; i < productArray.length; i++) {
+    if (imageClicked === productArray[i].name) {
       productArray[i].votes++;
       // Generate new images
       renderImages();
@@ -175,8 +175,16 @@ function handleImgClick(event) {
   }
 
   // Once voting rounds equal zero, remove ability to click image
-  if (votingRounds === 0){
+  if (votingRounds === 0) {
     imgContainer.removeEventListener('click', handleImgClick);
+
+    // ***** LOCAL STORAGE *****
+
+    // Convert data to string/JSON to store in local storage
+    let stringifiedProducts = JSON.stringify(productArray);
+
+    // Store stringified data to local storage
+    localStorage.setItem('myProducts', stringifiedProducts);
   }
 }
 
@@ -202,25 +210,48 @@ function handleShowResults() {
 }
 
 // ***** EXECUTABLE CODE *****
-createProduct('bag');
-createProduct('banana');
-createProduct('bathroom');
-createProduct('boots');
-createProduct('breakfast');
-createProduct('bubblegum');
-createProduct('chair');
-createProduct('cthulhu');
-createProduct('dog-duck');
-createProduct('dragon');
-createProduct('pen');
-createProduct('pet-sweep');
-createProduct('scissors');
-createProduct('shark');
-createProduct('sweep','png');
-createProduct('tauntaun');
-createProduct('unicorn');
-createProduct('water-can');
-createProduct('wine-glass');
+
+// ***** lOCAL STORAGE CONTINUES HERE *****
+
+// Retrieve data from local storage
+let retrievedProducts = localStorage.getItem('myProducts');
+
+// Convert data from local storage into usable data
+let parsedProducts = JSON.parse(retrievedProducts);
+
+// Re-build product objects using constructors
+if (retrievedProducts) {
+  for (let i = 0; i < parsedProducts.length; i++) {
+    if (parsedProducts[i].name === 'sweep') {
+      createProduct(parsedProducts[i].name, 'png');
+    } else {
+      createProduct(parsedProducts[i].name);
+    }
+    // Assign views and votes as product objects are being re-created
+    productArray[productArray.length - 1].views = parsedProducts[i].views;
+    productArray[productArray.length - 1].votes = parsedProducts[i].votes;
+  }
+} else { // If no objects in local storage create objects using this data
+  createProduct('bag');
+  createProduct('banana');
+  createProduct('bathroom');
+  createProduct('boots');
+  createProduct('breakfast');
+  createProduct('bubblegum');
+  createProduct('chair');
+  createProduct('cthulhu');
+  createProduct('dog-duck');
+  createProduct('dragon');
+  createProduct('pen');
+  createProduct('pet-sweep');
+  createProduct('scissors');
+  createProduct('shark');
+  createProduct('sweep','png');
+  createProduct('tauntaun');
+  createProduct('unicorn');
+  createProduct('water-can');
+  createProduct('wine-glass');
+}
 
 renderImages();
 
