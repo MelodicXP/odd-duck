@@ -1,4 +1,4 @@
-# Class 201 - Lab 11, 12
+# Class 201 - Lab 11, 12, 13
 
 ## Odd-Duck
 
@@ -9,13 +9,13 @@ I built an app with the purpose of presenting three different product images to 
 ### Links and Resources
 
 * [Link to deployed page](https://melodicxp.github.io/odd-duck/)
-* [In Class Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/inclass-demo)
-* [In Class Grid Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/grid-demo)
+* [In Class Demo - Class 13](https://github.com/codefellows/seattle-code-201d100/tree/main/class-13)
 * [In Class Demo - Class 12](https://github.com/codefellows/seattle-code-201d100/tree/main/class-12/inclass-demo)
 * [In Class Chart Demo - Class 12](https://github.com/codefellows/seattle-code-201d100/tree/main/class-12/chart-demo)
 * [Responsive Chart Example - ChartJS CodePen](https://codepen.io/chartjs/pen/YVWZbz)
 * [Responsive Charts](https://www.chartjs.org/docs/latest/configuration/responsive.html#important-note)
-* [In Class Demo - Class 13](https://github.com/codefellows/seattle-code-201d100/tree/main/class-13)
+* [In Class Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/inclass-demo)
+* [In Class Grid Demo - Class 11](https://github.com/codefellows/seattle-code-201d100/tree/main/class-11/grid-demo)
 
 ### Lighthouse Accessibility Report Score
 
@@ -28,7 +28,7 @@ I built an app with the purpose of presenting three different product images to 
 #### July 7, 2023  
 
 * I learned to utilize local storage by keeping voting data in tact in between page refreshes.
-* Data storage and retrieval is accomplished by JSON and Parse.
+* Data storage and retrieval is accomplished with JSON and Parse.
 * Reconstructing objects when retrieving from local storage is preferred when implementing prototypes.
 
 #### July 4, 2023  
