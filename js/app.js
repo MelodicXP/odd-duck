@@ -211,34 +211,37 @@ function renderChart() {
 
 // ***** lOCAL STORAGE CONTINUES HERE *****
 
-// Retrieve data from local storage
-let retrievedProducts = localStorage.getItem('myProducts');
-
-// Convert data from local storage into usable data
-let parsedProducts = JSON.parse(retrievedProducts);
-
-// Re-build product objects using constructors
-if (retrievedProducts) {
-  for (let i = 0; i < parsedProducts.length; i++) {
-    if (parsedProducts[i].name === 'sweep') {
-      createProduct(parsedProducts[i].name, 'png');
-    } else {
-      createProduct(parsedProducts[i].name);
+const loadAndRebuildProductData = () => {
+  // Retrieve data from local storage if any
+  let productsFromLocalStorage = localStorage.getItem('myProducts');
+  
+  // Convert data from local storage into usable data (parse)
+  let parsedProductsFromLocalStorage = JSON.parse(productsFromLocalStorage);
+  
+  // If products from local storage present, Re-build products from local storage
+  if (productsFromLocalStorage) {
+    for (let i = 0; i < parsedProductsFromLocalStorage.length; i++) {
+      if (parsedProductsFromLocalStorage[i].name === 'sweep') {
+        createProduct(parsedProductsFromLocalStorage[i].name, 'png');
+      } else {
+        createProduct(parsedProductsFromLocalStorage[i].name);
+      }
+      // Assign views and votes as product objects are being re-created
+      productArray[productArray.length - 1].views = parsedProductsFromLocalStorage[i].views;
+      productArray[productArray.length - 1].votes = parsedProductsFromLocalStorage[i].votes;
     }
-    // Assign views and votes as product objects are being re-created
-    productArray[productArray.length - 1].views = parsedProducts[i].views;
-    productArray[productArray.length - 1].votes = parsedProducts[i].votes;
+  } else { // If no objects in local storage create objects using original product data
+    originalProductData.forEach((product) => {
+      if (product === 'sweep') {
+        createProduct(product, 'png');
+      } else {
+        createProduct(product);
+      }
+    });
   }
-} else { // If no objects in local storage create objects using original product data
-  originalProductData.forEach((product) => {
-    if (product === 'sweep') {
-      createProduct(product, 'png');
-    } else {
-      createProduct(product);
-    }
-  });
 }
 
+loadAndRebuildProductData();
 renderImages();
 
 imgContainer.addEventListener('click', handleImgClick);
