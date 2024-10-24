@@ -45,38 +45,57 @@ function renderImages(){
       indexArray.push(randomNumber);
     }
   }
-  
+
   // Remove last three indices from indexArray
-  imageOneIndex = indexArray.pop();
-  imageTwoIndex = indexArray.pop();
-  imageThreeIndex = indexArray.pop();
+  let randomIndexNumbers = [indexArray.pop(), indexArray.pop(), indexArray.pop()];
+  
+  // Get image elements from html (defined at top)
+  let imageElements = [imageOne, imageTwo, imageThree];
+  let figCaptions = [figCaptionOne, figCaptionTwo, figCaptionThree];
+  
+  // For each random index number generated, get random product and set image attributes and increase views
+  randomIndexNumbers.forEach((index, i) => {
+    let randomProduct = productArray[index];
+    setImageAttributes(imageElements[i], figCaptions[i], randomProduct);
+    randomProduct.views++;
+  });
+  // imageOneIndex = indexArray.pop();
+  // imageTwoIndex = indexArray.pop();
+  // imageThreeIndex = indexArray.pop();
 
   // Assign unique image as source to be rendered, assign title, assign alt
-  imageOne.src = productArray[imageOneIndex].image;
-  imageOne.title = productArray[imageOneIndex].name;
-  imageOne.alt = `picture of ${productArray[imageOneIndex].name}`;
-  figCaptionOne.textContent = capitalizeFirstLetter(productArray[imageOneIndex].name);
+  // imageOne.src = productArray[imageOneIndex].image;
+  // imageOne.title = productArray[imageOneIndex].name;
+  // imageOne.alt = `picture of ${productArray[imageOneIndex].name}`;
+  // figCaptionOne.textContent = capitalizeFirstLetter(productArray[imageOneIndex].name);
 
-  imageTwo.src = productArray[imageTwoIndex].image;
-  imageTwo.title = productArray[imageTwoIndex].name;
-  imageTwo.alt = `picture of ${productArray[imageTwoIndex].name}`;
-  figCaptionTwo.textContent = capitalizeFirstLetter(productArray[imageTwoIndex].name);
+  // imageTwo.src = productArray[imageTwoIndex].image;
+  // imageTwo.title = productArray[imageTwoIndex].name;
+  // imageTwo.alt = `picture of ${productArray[imageTwoIndex].name}`;
+  // figCaptionTwo.textContent = capitalizeFirstLetter(productArray[imageTwoIndex].name);
 
-  imageThree.src = productArray[imageThreeIndex].image;
-  imageThree.title = productArray[imageThreeIndex].name;
-  imageThree.alt = `picture of ${productArray[imageThreeIndex].name}`;
-  figCaptionThree.textContent = capitalizeFirstLetter(productArray[imageThreeIndex].name);
+  // imageThree.src = productArray[imageThreeIndex].image;
+  // imageThree.title = productArray[imageThreeIndex].name;
+  // imageThree.alt = `picture of ${productArray[imageThreeIndex].name}`;
+  // figCaptionThree.textContent = capitalizeFirstLetter(productArray[imageThreeIndex].name);
 
   // Increase image views
-  productArray[imageOneIndex].views++;
-  productArray[imageTwoIndex].views++;
-  productArray[imageThreeIndex].views++;
+  // productArray[imageOneIndex].views++;
+  // productArray[imageTwoIndex].views++;
+  // productArray[imageThreeIndex].views++;
 }
 
 // Generate random numbers for product array
 function randomIndexGenerator() {
   return Math.floor(Math.random() * productArray.length);
 }
+// Set attritbutes for each image rendered
+let setImageAttributes = (imageElement, figCaptionElement, product) => {
+  imageElement.src = product.image;
+  imageElement.title = product.name;
+  imageElement.alt = `picture of ${product.name}`;
+  figCaptionElement = capitalizeFirstLetter(product.name);
+};
 
 // Capitalize first letter of string
 function capitalizeFirstLetter(str) {
