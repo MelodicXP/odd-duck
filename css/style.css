@@ -63,12 +63,6 @@ header div h1 {
   border: none;
 }
 
-#chart-container p {
-  font-size: .9vw;
-  text-align: center;
-  margin-top: 4px;
-}
-
 #show-results-btn {
   margin-top: 10px;
   padding: 10px;
@@ -85,6 +79,12 @@ header div h1 {
   background-color: #ddd;
   color:#444;
   cursor: pointer; 
+}
+
+#chart-container p {
+  font-size: .9vw;
+  text-align: center;
+  margin-top: 4px;
 }
 
 #image-container {
