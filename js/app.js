@@ -230,13 +230,13 @@ if (retrievedProducts) {
     productArray[productArray.length - 1].votes = parsedProducts[i].votes;
   }
 } else { // If no objects in local storage create objects using original product data
-  for (let i = 0; i < originalProductData.length; i++) {
-    if (originalProductData[i] === 'sweep'){
-      createProduct(originalProductData[i], 'png');
+  originalProductData.forEach((product) => {
+    if (product === 'sweep') {
+      createProduct(product, 'png');
     } else {
-      createProduct(originalProductData[i]);
+      createProduct(product);
     }
-  }
+  });
 }
 
 renderImages();
