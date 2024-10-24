@@ -4,7 +4,7 @@ let originalProductData = ['bag','banana','bathroom','boots','breakfast','bubble
  ,'dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','water-can','wine-glass']; // original data
 let productArray = []; // store products as they are created
 let votingRounds = 25;
-let indexArray = [];
+let randomIndexArray = []; // hold randomly generated index numbers
 
 // ***** DOM WINDOWS *****
 let imgContainer = document.getElementById('image-container');
@@ -35,19 +35,17 @@ function createProduct(name, imageExtension ='jpg') {
 }
 
 // Render Images
-function renderImages(){
-  let imageOneIndex, imageTwoIndex, imageThreeIndex;
-
+function renderThreeRandomImages() {
   // Generate 6 random numbers and check if numbers are unique
-  while (indexArray.length < 6) {
+  while (randomIndexArray.length < 6) {
     let randomNumber = randomIndexGenerator();
-    if (!indexArray.includes(randomNumber) ) {
-      indexArray.push(randomNumber);
+    if (!randomIndexArray.includes(randomNumber) ) {
+      randomIndexArray.push(randomNumber);
     }
   }
 
-  // Remove last three indices from indexArray
-  let randomIndexNumbers = [indexArray.pop(), indexArray.pop(), indexArray.pop()];
+  // Remove last three indices from randomIndexArray
+  let randomIndexNumbers = [randomIndexArray.pop(), randomIndexArray.pop(), randomIndexArray.pop()];
   
   // Get image elements from html (defined at top)
   let imageElements = [imageOne, imageTwo, imageThree];
@@ -112,7 +110,7 @@ function handleImgClick(event) {
     if (imageClicked === productArray[i].name) {
       productArray[i].votes++;
       // Generate new images
-      renderImages();
+      renderThreeRandomImages();
       // Decrement voting round
       votingRounds--;
       roundsLeft.textContent = `There are ${votingRounds} voting rounds left!`;
@@ -261,7 +259,7 @@ const loadAndRebuildProductData = () => {
 
 // ***** EXECUTABLE CODE *****
 loadAndRebuildProductData();
-renderImages();
+renderThreeRandomImages();
 imgContainer.addEventListener('click', handleImgClick);
 resultsBtn.addEventListener('click', handleShowResults);
 
