@@ -1,6 +1,4 @@
 'use strict';
-
-
 // ***** GLOBALS *****
 let productArray = [];
 let votingRounds = 25;
@@ -29,7 +27,48 @@ function Product (name, imageExtension = 'jpg') {
   this.votes = 0;
 }
 
-// ***** HELPER FUNCTIONS / UTILITIES *****
+// Create Product Objects
+function createProduct(name, imageExtension ='jpg') {
+  productArray.push(new Product(name, imageExtension));
+}
+
+// Render Images
+function renderImages(){
+  let imageOneIndex, imageTwoIndex, imageThreeIndex;
+
+  // Generate 6 random numbers and check if numbers are unique
+  while (indexArray.length < 6) {
+    let randomNumber = randomIndexGenerator();
+    if (!indexArray.includes(randomNumber) ) {
+      indexArray.push(randomNumber);
+    }
+  }
+  // Remove first three indices from indexArray
+  imageOneIndex = indexArray.shift();
+  imageTwoIndex = indexArray.shift();
+  imageThreeIndex = indexArray.shift();
+
+  // Assign unique image as source to be rendered, assign title, assign alt
+  imageOne.src = productArray[imageOneIndex].image;
+  imageOne.title = productArray[imageOneIndex].name;
+  imageOne.alt = `picture of ${productArray[imageOneIndex].name}`;
+  figCaptionOne.textContent = capitalizeFirstLetter(productArray[imageOneIndex].name);
+
+  imageTwo.src = productArray[imageTwoIndex].image;
+  imageTwo.title = productArray[imageTwoIndex].name;
+  imageTwo.alt = `picture of ${productArray[imageTwoIndex].name}`;
+  figCaptionTwo.textContent = capitalizeFirstLetter(productArray[imageTwoIndex].name);
+
+  imageThree.src = productArray[imageThreeIndex].image;
+  imageThree.title = productArray[imageThreeIndex].name;
+  imageThree.alt = `picture of ${productArray[imageThreeIndex].name}`;
+  figCaptionThree.textContent = capitalizeFirstLetter(productArray[imageThreeIndex].name);
+
+  // Increase image views
+  productArray[imageOneIndex].views++;
+  productArray[imageTwoIndex].views++;
+  productArray[imageThreeIndex].views++;
+}
 
 // Generate random numbers for product array
 function randomIndexGenerator() {
@@ -41,9 +80,56 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// Create Product Objects
-function createProduct(name, imageExtension ='jpg') {
-  productArray.push(new Product(name, imageExtension));
+// ***** EVENT HANDLERS *****
+function handleImgClick(event) {
+  // Identify image clicked
+  let imageClicked = event.target.title;
+
+  // Increase vote on image clicked
+  for (let i = 0; i < productArray.length; i++) {
+    if (imageClicked === productArray[i].name) {
+      productArray[i].votes++;
+      // Generate new images
+      renderImages();
+      // Decrement voting round
+      votingRounds--;
+      roundsLeft.textContent = `There are ${votingRounds} voting rounds left!`;
+    }
+  }
+
+  // Once voting rounds equal zero, remove ability to click image
+  if (votingRounds === 0) {
+    imgContainer.removeEventListener('click', handleImgClick);
+
+    // ***** LOCAL STORAGE *****
+
+    // Convert data to string/JSON to store in local storage
+    let stringifiedProducts = JSON.stringify(productArray);
+
+    // Store stringified data to local storage
+    localStorage.setItem('myProducts', stringifiedProducts);
+  }
+}
+
+function handleShowResults() {
+  if (votingRounds === 0) {
+    resultsHeader.textContent = 'Voting Results';
+
+    // Apply styling to .chart-container
+    let chartContainer = document.querySelector('#chart-data');
+    chartContainer.style.position = 'relative';
+    chartContainer.style.margin = 'auto';
+    chartContainer.style.height = '100vh';
+    chartContainer.style.width = '30vw';
+    chartContainer.style.border = '2px solid black';
+    chartContainer.style.background = 'white';
+
+    // Create Chart
+    renderChart();
+
+    // Prevent duplicate list re-creation
+    resultsBtn.removeEventListener('click', handleShowResults);
+  }
 }
 
 // Create Chart from Chart.JS library
@@ -117,96 +203,6 @@ function renderChart() {
 
   // Render chart
   new Chart(ctx, chartConfig);
-}
-
-// Render Images
-function renderImages(){
-  let imageOneIndex, imageTwoIndex, imageThreeIndex;
-
-  // Generate 6 random numbers and check if numbers are unique
-  while (indexArray.length < 6) {
-    let randomNumber = randomIndexGenerator();
-    if (!indexArray.includes(randomNumber) ) {
-      indexArray.push(randomNumber);
-    }
-  }
-  // Remove first three indices from indexArray
-  imageOneIndex = indexArray.shift();
-  imageTwoIndex = indexArray.shift();
-  imageThreeIndex = indexArray.shift();
-
-  // Assign unique image as source to be rendered, assign title, assign alt
-  imageOne.src = productArray[imageOneIndex].image;
-  imageOne.title = productArray[imageOneIndex].name;
-  imageOne.alt = `picture of ${productArray[imageOneIndex].name}`;
-  figCaptionOne.textContent = capitalizeFirstLetter(productArray[imageOneIndex].name);
-
-  imageTwo.src = productArray[imageTwoIndex].image;
-  imageTwo.title = productArray[imageTwoIndex].name;
-  imageTwo.alt = `picture of ${productArray[imageTwoIndex].name}`;
-  figCaptionTwo.textContent = capitalizeFirstLetter(productArray[imageTwoIndex].name);
-
-  imageThree.src = productArray[imageThreeIndex].image;
-  imageThree.title = productArray[imageThreeIndex].name;
-  imageThree.alt = `picture of ${productArray[imageThreeIndex].name}`;
-  figCaptionThree.textContent = capitalizeFirstLetter(productArray[imageThreeIndex].name);
-
-  // Increase image views
-  productArray[imageOneIndex].views++;
-  productArray[imageTwoIndex].views++;
-  productArray[imageThreeIndex].views++;
-}
-
-// ***** EVENT HANDLERS *****
-function handleImgClick(event) {
-  // Identify image clicked
-  let imageClicked = event.target.title;
-
-  // Increase vote on image clicked
-  for (let i = 0; i < productArray.length; i++) {
-    if (imageClicked === productArray[i].name) {
-      productArray[i].votes++;
-      // Generate new images
-      renderImages();
-      // Decrement voting round
-      votingRounds--;
-      roundsLeft.textContent = `There are ${votingRounds} voting rounds left!`;
-    }
-  }
-
-  // Once voting rounds equal zero, remove ability to click image
-  if (votingRounds === 0) {
-    imgContainer.removeEventListener('click', handleImgClick);
-
-    // ***** LOCAL STORAGE *****
-
-    // Convert data to string/JSON to store in local storage
-    let stringifiedProducts = JSON.stringify(productArray);
-
-    // Store stringified data to local storage
-    localStorage.setItem('myProducts', stringifiedProducts);
-  }
-}
-
-function handleShowResults() {
-  if (votingRounds === 0) {
-    resultsHeader.textContent = 'Voting Results';
-
-    // Apply styling to .chart-container
-    let chartContainer = document.querySelector('#chart-data');
-    chartContainer.style.position = 'relative';
-    chartContainer.style.margin = 'auto';
-    chartContainer.style.height = '100vh';
-    chartContainer.style.width = '30vw';
-    chartContainer.style.border = '2px solid black';
-    chartContainer.style.background = 'white';
-
-    // Create Chart
-    renderChart();
-
-    // Prevent duplicate list re-creation
-    resultsBtn.removeEventListener('click', handleShowResults);
-  }
 }
 
 // ***** EXECUTABLE CODE *****
