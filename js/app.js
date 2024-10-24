@@ -45,10 +45,11 @@ function renderImages(){
       indexArray.push(randomNumber);
     }
   }
-  // Remove first three indices from indexArray
-  imageOneIndex = indexArray.shift();
-  imageTwoIndex = indexArray.shift();
-  imageThreeIndex = indexArray.shift();
+  
+  // Remove last three indices from indexArray
+  imageOneIndex = indexArray.pop();
+  imageTwoIndex = indexArray.pop();
+  imageThreeIndex = indexArray.pop();
 
   // Assign unique image as source to be rendered, assign title, assign alt
   imageOne.src = productArray[imageOneIndex].image;
