@@ -1,6 +1,8 @@
 'use strict';
 // ***** GLOBALS *****
-let productArray = [];
+let productData = ['bag','banana','bathroom','boots','breakfast','bubblegum','chair','cthulhu','dog-duck'
+ ,'dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','water-can','wine-glass']; // original data
+let productArray = []; // store products as they are created
 let votingRounds = 25;
 let indexArray = [];
 
@@ -227,26 +229,14 @@ if (retrievedProducts) {
     productArray[productArray.length - 1].views = parsedProducts[i].views;
     productArray[productArray.length - 1].votes = parsedProducts[i].votes;
   }
-} else { // If no objects in local storage create objects using this data
-  createProduct('bag');
-  createProduct('banana');
-  createProduct('bathroom');
-  createProduct('boots');
-  createProduct('breakfast');
-  createProduct('bubblegum');
-  createProduct('chair');
-  createProduct('cthulhu');
-  createProduct('dog-duck');
-  createProduct('dragon');
-  createProduct('pen');
-  createProduct('pet-sweep');
-  createProduct('scissors');
-  createProduct('shark');
-  createProduct('sweep','png');
-  createProduct('tauntaun');
-  createProduct('unicorn');
-  createProduct('water-can');
-  createProduct('wine-glass');
+} else { // If no objects in local storage create objects using original product data
+  for (let i = 0; i < productData.length; i++) {
+    if (productData[i] === 'sweep'){
+      createProduct(productData[i], 'png');
+    } else {
+      createProduct(productData[i]);
+    }
+  }
 }
 
 renderImages();
