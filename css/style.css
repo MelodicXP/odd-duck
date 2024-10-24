@@ -88,7 +88,7 @@ header div h1 {
   cursor: pointer; 
 }
 
-.grid-item3 {
+#image-container {
   grid-area: img;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -111,6 +111,17 @@ img:hover {
   cursor: pointer; 
 }
 
+.team-message {
+  grid-area: content;
+}
+
+.team-message {
+  margin-top: 0;
+  line-height: 2vw;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
 .grid-container3 {
   width: 90%;
   margin: auto;
@@ -124,10 +135,6 @@ img:hover {
   padding: 30px;
 }
 
-.grid-item4 {
-  grid-area: content;
-}
-
 figcaption {
   text-align: center;
   font-weight: bold;
@@ -139,12 +146,7 @@ figcaption {
 
 
 
-#message-team p {
-  margin-top: 10px;
-  line-height: 2vw;
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
-}
+
 
 footer {
   text-align: center;
