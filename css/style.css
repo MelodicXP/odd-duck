@@ -1,3 +1,4 @@
+/* header section */
 header {
   width: 90%;
   margin: auto;
@@ -20,9 +21,11 @@ header div h1 {
   margin-top: 20px;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
+  font-size: 1.25vw;
+  text-align: center;
 }
 
-.grid-container2 {
+.main-grid-container {
   width: 90%;
   margin: auto;
   display: grid;
@@ -35,12 +38,18 @@ header div h1 {
   ;
 }
 
-.grid-item2 {
+.main-grid-container div {
+  border: 2px solid black;
+  font-size: 1.5vw;
+  padding: 30px;
+}
+
+.chart-container {
   grid-area: sidebar;
   /* width:max-content; */
 }
 
-h2 {
+.chart-container h2 {
   /* border: 3px solid purple; */
   /* background-color: lightgreen; */
   padding: 5px;
@@ -51,79 +60,14 @@ h2 {
   font-weight: bold;
 }
 
-.grid-container3 {
-  width: 90%;
-  margin: auto;
-  display: grid;
-  grid-auto-rows: minmax(auto, auto);
-}
-
-.grid-container2 div {
-  border: 2px solid black;
-  font-size: 1.5vw;
-  padding: 30px;
-}
-
-.grid-container3 div {
-  border: 2px solid black;
-  font-size: 1.5vw;
-  padding: 30px;
-}
-
-.grid-item2 p {
-  font-size: .9vw;
-  text-align: center;
-  margin-top: 4px;
-}
-
-.grid-item2 div {
+.chart-container div {
   border: none;
 }
 
-.grid-item3 {
-  grid-area: img;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-item4 {
-  grid-area: content;
-}
-
-
-
-figcaption {
+.chart-container p {
+  font-size: .9vw;
   text-align: center;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  margin-top: 10px;
-}
-
-img {
-  width: 97%;
-  font-weight: bold;
-  transition: 350ms;
-}
-
-img:hover {
-  width: 100%;
-  cursor: pointer; 
-}
-
-#results-container {
-  /* border: 3px solid red; */
-  /* background-color: beige; */
-  min-width: 100%;
-  width: max-content;
-  padding: 10px;
-}
-
-#results-container li {
-  /* border: 3px solid green; */
-  list-style: disc;
-  font-size: 1.25vw;
-  margin-bottom: 10px;
-  margin-left: 20px;
+  margin-top: 4px;
 }
 
 #show-results-btn {
@@ -144,9 +88,10 @@ img:hover {
   cursor: pointer; 
 }
 
-#show-rounds-left {
-  font-size: 1.25vw;
-  text-align: center;
+.grid-item3 {
+  grid-area: img;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #image-container div {
@@ -154,6 +99,45 @@ img:hover {
   flex-direction: column;
   justify-content: flex-end;
 }
+
+img {
+  width: 97%;
+  font-weight: bold;
+  transition: 350ms;
+}
+
+img:hover {
+  width: 100%;
+  cursor: pointer; 
+}
+
+.grid-container3 {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-auto-rows: minmax(auto, auto);
+}
+
+.grid-container3 div {
+  border: 2px solid black;
+  font-size: 1.5vw;
+  padding: 30px;
+}
+
+.grid-item4 {
+  grid-area: content;
+}
+
+figcaption {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 10px;
+}
+
+
+
+
 
 #message-team p {
   margin-top: 10px;

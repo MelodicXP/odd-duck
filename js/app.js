@@ -16,7 +16,7 @@ let figCaptionTwo = document.querySelector('#image-two + figcaption');
 let figCaptionThree = document.querySelector('#image-three + figcaption');
 let resultsBtn = document.getElementById('show-results-btn');
 let roundsLeft = document.getElementById('show-rounds-left');
-let resultsHeader = document.getElementById('results-header');
+let resultsHeader = document.getElementById('chart-header');
 
 // ***** CANVAS ELEMENT *****
 let ctx = document.getElementById('my-chart');
@@ -193,7 +193,7 @@ function handleShowResults() {
     resultsHeader.textContent = 'Voting Results';
 
     // Apply styling to .chart-container
-    let chartContainer = document.querySelector('.chart-container');
+    let chartContainer = document.querySelector('.chart-data');
     chartContainer.style.position = 'relative';
     chartContainer.style.margin = 'auto';
     chartContainer.style.height = '100vh';
