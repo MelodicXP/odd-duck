@@ -193,7 +193,7 @@ function handleShowResults() {
     resultsHeader.textContent = 'Voting Results';
 
     // Apply styling to .chart-container
-    let chartContainer = document.querySelector('.chart-data');
+    let chartContainer = document.querySelector('#chart-data');
     chartContainer.style.position = 'relative';
     chartContainer.style.margin = 'auto';
     chartContainer.style.height = '100vh';
