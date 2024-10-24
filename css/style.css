@@ -29,6 +29,22 @@ h1 {
   ;
 }
 
+.grid-item2 {
+  grid-area: sidebar;
+  /* width:max-content; */
+}
+
+h2 {
+  /* border: 3px solid purple; */
+  /* background-color: lightgreen; */
+  padding: 5px;
+  margin: auto;
+  margin-bottom: 0px;
+  text-align: center;
+  font-size: 1.5vw;
+  font-weight: bold;
+}
+
 .grid-container3 {
   width: 90%;
   margin: auto;
@@ -54,11 +70,6 @@ h1 {
   padding: 30px;
 }
 
-.grid-item2 {
-  grid-area: sidebar;
-  /* width:max-content; */
-}
-
 .grid-item2 p {
   font-size: .9vw;
   text-align: center;
@@ -79,16 +90,7 @@ h1 {
   grid-area: content;
 }
 
-h2{
-  /* border: 3px solid purple; */
-  /* background-color: lightgreen; */
-  padding: 5px;
-  margin: auto;
-  margin-bottom: 0px;
-  text-align: center;
-  font-size: 1.5vw;
-  font-weight: bold;
-}
+
 
 figcaption {
   text-align: center;
