@@ -3,7 +3,13 @@ header {
   margin: auto;
 }
 
-h1 {
+header div  {
+  border: 2px solid black;
+  font-size: 1.5vw;
+  padding: 30px;
+}
+
+header div h1 {
   font-size: 3vw;
   font-family: 'Belanosima', sans-serif;
   width: max-content;
@@ -50,12 +56,6 @@ h2 {
   margin: auto;
   display: grid;
   grid-auto-rows: minmax(auto, auto);
-}
-
-.grid-container div  {
-  border: 2px solid black;
-  font-size: 1.5vw;
-  padding: 30px;
 }
 
 .grid-container2 div {
