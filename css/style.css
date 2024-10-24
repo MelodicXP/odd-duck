@@ -43,12 +43,12 @@ header div h1 {
   padding: 30px;
 }
 
-.chart-container {
+#chart-container {
   grid-area: sidebar;
   /* width:max-content; */
 }
 
-.chart-container h2 {
+#chart-header {
   /* border: 3px solid purple; */
   /* background-color: lightgreen; */
   padding: 5px;
@@ -59,11 +59,11 @@ header div h1 {
   font-weight: bold;
 }
 
-.chart-container div {
+#chart-container div {
   border: none;
 }
 
-.chart-container p {
+#chart-container p {
   font-size: .9vw;
   text-align: center;
   margin-top: 4px;
@@ -117,18 +117,15 @@ figcaption {
   margin-top: 10px;
 }
 
-.team-message {
+#team-message-container {
   grid-area: content;
-}
-
-.team-message {
   margin-top: 0;
   line-height: 2vw;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
 }
 
-.footer-container {
+footer {
   width: 90%;
   margin: auto;
   display: grid;
@@ -136,7 +133,7 @@ figcaption {
   text-align: center;
 }
 
-.footer-container div {
+footer div {
   border: 2px solid black;
   font-size: 1.5vw;
   padding: 30px;
