@@ -11,9 +11,9 @@ let imgContainer = document.getElementById('image-container');
 let imageOne = document.getElementById('image-one');
 let imageTwo = document.getElementById('image-two');
 let imageThree = document.getElementById('image-three');
-let figCaptionOne = document.querySelector('#image-one + figcaption');
-let figCaptionTwo = document.querySelector('#image-two + figcaption');
-let figCaptionThree = document.querySelector('#image-three + figcaption');
+let imageCaptionOne = document.querySelector('#image-one + figcaption');
+let imageCaptionTwo = document.querySelector('#image-two + figcaption');
+let imageCaptionThree = document.querySelector('#image-three + figcaption');
 let resultsBtn = document.getElementById('show-results-btn');
 let roundsLeft = document.getElementById('show-rounds-left');
 let resultsHeader = document.getElementById('chart-header');
@@ -44,43 +44,19 @@ function renderThreeRandomImages() {
     }
   }
 
-  // Remove last three indices from randomIndexArray
+  // Remove last three random numbers from randomIndexArray
   let randomIndexNumbers = [randomIndexArray.pop(), randomIndexArray.pop(), randomIndexArray.pop()];
   
   // Get image elements from html (defined at top)
   let imageElements = [imageOne, imageTwo, imageThree];
-  let figCaptions = [figCaptionOne, figCaptionTwo, figCaptionThree];
+  let imageCaptions = [imageCaptionOne, imageCaptionTwo, imageCaptionThree];
   
   // For each random index number generated, get random product and set image attributes and increase views
   randomIndexNumbers.forEach((index, i) => {
     let randomProduct = productArray[index];
-    setImageAttributes(imageElements[i], figCaptions[i], randomProduct);
+    setImageAttributes(imageElements[i], imageCaptions[i], randomProduct);
     randomProduct.views++;
   });
-  // imageOneIndex = indexArray.pop();
-  // imageTwoIndex = indexArray.pop();
-  // imageThreeIndex = indexArray.pop();
-
-  // Assign unique image as source to be rendered, assign title, assign alt
-  // imageOne.src = productArray[imageOneIndex].image;
-  // imageOne.title = productArray[imageOneIndex].name;
-  // imageOne.alt = `picture of ${productArray[imageOneIndex].name}`;
-  // figCaptionOne.textContent = capitalizeFirstLetter(productArray[imageOneIndex].name);
-
-  // imageTwo.src = productArray[imageTwoIndex].image;
-  // imageTwo.title = productArray[imageTwoIndex].name;
-  // imageTwo.alt = `picture of ${productArray[imageTwoIndex].name}`;
-  // figCaptionTwo.textContent = capitalizeFirstLetter(productArray[imageTwoIndex].name);
-
-  // imageThree.src = productArray[imageThreeIndex].image;
-  // imageThree.title = productArray[imageThreeIndex].name;
-  // imageThree.alt = `picture of ${productArray[imageThreeIndex].name}`;
-  // figCaptionThree.textContent = capitalizeFirstLetter(productArray[imageThreeIndex].name);
-
-  // Increase image views
-  // productArray[imageOneIndex].views++;
-  // productArray[imageTwoIndex].views++;
-  // productArray[imageThreeIndex].views++;
 }
 
 // Generate random numbers for product array
@@ -88,11 +64,11 @@ function randomIndexGenerator() {
   return Math.floor(Math.random() * productArray.length);
 }
 // Set attritbutes for each image rendered
-let setImageAttributes = (imageElement, figCaptionElement, product) => {
+let setImageAttributes = (imageElement, imageCaptionElement, product) => {
   imageElement.src = product.image;
   imageElement.title = product.name;
   imageElement.alt = `picture of ${product.name}`;
-  figCaptionElement = capitalizeFirstLetter(product.name);
+  imageCaptionElement = capitalizeFirstLetter(product.name);
 };
 
 // Capitalize first letter of string
