@@ -207,8 +207,6 @@ function renderChart() {
   new Chart(ctx, chartConfig);
 }
 
-// ***** EXECUTABLE CODE *****
-
 // ***** lOCAL STORAGE CONTINUES HERE *****
 
 const loadAndRebuildProductData = () => {
@@ -220,16 +218,16 @@ const loadAndRebuildProductData = () => {
   
   // If products from local storage present, Re-build products from local storage
   if (productsFromLocalStorage) {
-    for (let i = 0; i < parsedProductsFromLocalStorage.length; i++) {
-      if (parsedProductsFromLocalStorage[i].name === 'sweep') {
-        createProduct(parsedProductsFromLocalStorage[i].name, 'png');
+    parsedProductsFromLocalStorage.forEach((product) => {
+      if (product.name === 'sweep') {
+        createProduct(product.name, 'png');
       } else {
-        createProduct(parsedProductsFromLocalStorage[i].name);
+        createProduct(product.name);
       }
       // Assign views and votes as product objects are being re-created
-      productArray[productArray.length - 1].views = parsedProductsFromLocalStorage[i].views;
-      productArray[productArray.length - 1].votes = parsedProductsFromLocalStorage[i].votes;
-    }
+      productArray[productArray.length - 1].views = product.views;
+      productArray[productArray.length - 1].votes = product.votes;
+    });
   } else { // If no objects in local storage create objects using original product data
     originalProductData.forEach((product) => {
       if (product === 'sweep') {
@@ -241,10 +239,9 @@ const loadAndRebuildProductData = () => {
   }
 }
 
+// ***** EXECUTABLE CODE *****
 loadAndRebuildProductData();
 renderImages();
-
 imgContainer.addEventListener('click', handleImgClick);
-
 resultsBtn.addEventListener('click', handleShowResults);
 
