@@ -21,18 +21,18 @@ let resultsHeader = document.getElementById('chart-header');
 let ctx = document.getElementById('my-chart');
 
 // ***** CONSTRUCTOR FUNCTION *****
-function Product(name, imageExtension = 'jpg') {
+function Product(name, imageExtension = 'jpg', views = 0, votes = 0) {
   this.name = name;
   this.image = `img/${name}.${imageExtension}`;
-  this.views = 0;
-  this.votes = 0;
+  this.views = views;
+  this.votes = votes;
 }
 
 Product.allProductArray = []; // store products as they are created
 
 // Create Product Objects
-function createProduct(name, imageExtension = 'jpg') {
-  Product.allProductArray.push(new Product(name, imageExtension));
+function createProduct (name, imageExtension = 'jpg', views, votes) {
+  Product.allProductArray.push(new Product(name, imageExtension, views, votes));
 }
 
 // Render Images
@@ -211,17 +211,14 @@ const loadAndRebuildProductData = () => {
   // Convert data from local storage into usable data (parse)
   let parsedProductsFromLocalStorage = JSON.parse(productsFromLocalStorage);
 
-  // If products from local storage present, Re-build products from local storage
+  // If product data from local storage is present, Re-build product instances from local storage
   if (productsFromLocalStorage) {
     parsedProductsFromLocalStorage.forEach((product) => {
       if (product.name === 'sweep') {
-        createProduct(product.name, 'png');
+        createProduct(product.name, 'png', product.views, product.votes);
       } else {
-        createProduct(product.name);
+        createProduct(product.name, undefined, product.views, product.votes);
       }
-      // Assign views and votes as product objects are being re-created
-      Product.allProductArray[Product.allProductArray.length - 1].views = product.views;
-      Product.allProductArray[Product.allProductArray.length - 1].votes = product.votes;
     });
   } else { // If no objects in local storage create objects using original product data
     originalProductData.forEach((product) => {
