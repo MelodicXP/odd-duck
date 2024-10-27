@@ -1,8 +1,7 @@
 'use strict';
 // ***** GLOBALS *****
-let originalProductData = ['bag','banana','bathroom','boots','breakfast','bubblegum','chair','cthulhu','dog-duck'
- ,'dragon','pen','pet-sweep','scissors','shark','sweep','tauntaun','unicorn','water-can','wine-glass']; // original data
-let productArray = []; // store products as they are created
+let originalProductData = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck'
+  , 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'water-can', 'wine-glass']; // original data
 let votingRounds = 25;
 let randomIndexArray = []; // hold randomly generated index numbers
 
@@ -22,16 +21,18 @@ let resultsHeader = document.getElementById('chart-header');
 let ctx = document.getElementById('my-chart');
 
 // ***** CONSTRUCTOR FUNCTION *****
-function Product (name, imageExtension = 'jpg') {
+function Product(name, imageExtension = 'jpg') {
   this.name = name;
   this.image = `img/${name}.${imageExtension}`;
   this.views = 0;
   this.votes = 0;
 }
 
+Product.allProductArray = []; // store products as they are created
+
 // Create Product Objects
-function createProduct(name, imageExtension ='jpg') {
-  productArray.push(new Product(name, imageExtension));
+function createProduct(name, imageExtension = 'jpg') {
+  Product.allProductArray.push(new Product(name, imageExtension));
 }
 
 // Render Images
@@ -39,21 +40,21 @@ function renderThreeRandomImages() {
   // Generate 6 random numbers and check if numbers are unique
   while (randomIndexArray.length < 6) {
     let randomNumber = randomIndexGenerator();
-    if (!randomIndexArray.includes(randomNumber) ) {
+    if (!randomIndexArray.includes(randomNumber)) {
       randomIndexArray.push(randomNumber);
     }
   }
 
   // Remove last three random numbers from randomIndexArray
   let randomIndexNumbers = [randomIndexArray.pop(), randomIndexArray.pop(), randomIndexArray.pop()];
-  
+
   // Get image elements from html (defined at top)
   let imageElements = [imageOne, imageTwo, imageThree];
   let imageCaptions = [imageCaptionOne, imageCaptionTwo, imageCaptionThree];
-  
+
   // For each random index number generated, get random product and set image attributes and increase views
   randomIndexNumbers.forEach((index, i) => {
-    let randomProduct = productArray[index];
+    let randomProduct = Product.allProductArray[index];
     setImageAttributes(imageElements[i], imageCaptions[i], randomProduct);
     randomProduct.views++;
   });
@@ -61,7 +62,7 @@ function renderThreeRandomImages() {
 
 // Generate random numbers for product array
 function randomIndexGenerator() {
-  return Math.floor(Math.random() * productArray.length);
+  return Math.floor(Math.random() * Product.allProductArray.length);
 }
 // Set attritbutes for each image rendered
 let setImageAttributes = (imageElement, imageCaptionElement, product) => {
@@ -82,9 +83,9 @@ function handleImgClick(event) {
   let imageClicked = event.target.title;
 
   // Increase vote on image clicked
-  for (let i = 0; i < productArray.length; i++) {
-    if (imageClicked === productArray[i].name) {
-      productArray[i].votes++;
+  for (let i = 0; i < Product.allProductArray.length; i++) {
+    if (imageClicked === Product.allProductArray[i].name) {
+      Product.allProductArray[i].votes++;
       // Generate new images
       renderThreeRandomImages();
       // Decrement voting round
@@ -100,7 +101,7 @@ function handleImgClick(event) {
     // ***** LOCAL STORAGE *****
 
     // Convert data to string/JSON to store in local storage
-    let stringifiedProducts = JSON.stringify(productArray);
+    let stringifiedProducts = JSON.stringify(Product.allProductArray);
 
     // Store stringified data to local storage
     localStorage.setItem('myProducts', stringifiedProducts);
@@ -132,13 +133,13 @@ function handleShowResults() {
 function renderChart() {
   // Prepare chart data
   let chartLabels = [];
-  let chartViews =[];
+  let chartViews = [];
   let chartVotes = [];
 
-  for(let i = 0; i < productArray.length; i++) {
-    chartLabels.push(productArray[i].name);
-    chartViews.push(productArray[i].views);
-    chartVotes.push(productArray[i].votes);
+  for (let i = 0; i < Product.allProductArray.length; i++) {
+    chartLabels.push(Product.allProductArray[i].name);
+    chartViews.push(Product.allProductArray[i].views);
+    chartVotes.push(Product.allProductArray[i].votes);
   }
 
   // Configure chart options
@@ -206,10 +207,10 @@ function renderChart() {
 const loadAndRebuildProductData = () => {
   // Retrieve data from local storage if any
   let productsFromLocalStorage = localStorage.getItem('myProducts');
-  
+
   // Convert data from local storage into usable data (parse)
   let parsedProductsFromLocalStorage = JSON.parse(productsFromLocalStorage);
-  
+
   // If products from local storage present, Re-build products from local storage
   if (productsFromLocalStorage) {
     parsedProductsFromLocalStorage.forEach((product) => {
@@ -219,8 +220,8 @@ const loadAndRebuildProductData = () => {
         createProduct(product.name);
       }
       // Assign views and votes as product objects are being re-created
-      productArray[productArray.length - 1].views = product.views;
-      productArray[productArray.length - 1].votes = product.votes;
+      Product.allProductArray[Product.allProductArray.length - 1].views = product.views;
+      Product.allProductArray[Product.allProductArray.length - 1].votes = product.votes;
     });
   } else { // If no objects in local storage create objects using original product data
     originalProductData.forEach((product) => {
@@ -233,9 +234,15 @@ const loadAndRebuildProductData = () => {
   }
 }
 
-// ***** EXECUTABLE CODE *****
-loadAndRebuildProductData();
-renderThreeRandomImages();
-imgContainer.addEventListener('click', handleImgClick);
-resultsBtn.addEventListener('click', handleShowResults);
+let startApp = () => {
+  loadAndRebuildProductData();
+  renderThreeRandomImages();
+  imgContainer.addEventListener('click', handleImgClick);
+  resultsBtn.addEventListener('click', handleShowResults);
+};
+
+///////////////////////////
+//** Start App
+///////////////////////////
+startApp();
 
