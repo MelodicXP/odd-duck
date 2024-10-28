@@ -12,26 +12,24 @@
   <title>Product Votes</title>
 </head>
 <body>
-
-  <header class="grid-container">
-    <div class="grid-item1" style="background-color: #f08080">
+  <header>
+    <div style="background-color: #f08080">
       <h1>Vote for our next creation! Click a product below to cast your vote!</h1>
       <p id="show-rounds-left"></p>
     </div>
   </header>
 
-  <main class="grid-container2">
-
-    <div class="grid-item2" style="background-color: #87cefa">
-      <h2 id="results-header"></h2>
-      <div class="chart-container">
+  <main class="main-grid-container">
+    <div id="chart-container" style="background-color: #87cefa">
+      <h2 id="chart-header"></h2>
+      <div id="chart-data">
         <canvas id="my-chart"></canvas>
       </div>
       <button type="button" id="show-results-btn">View Results</button>
       <p>(results revealed after voting rounds completed)</p>
     </div>
 
-    <section class="grid-item3" id="image-container">
+    <section id="image-container">
       <div style="background-color: #ffff00">
         <figure>
           <img id="image-one" src="" alt="">
@@ -51,11 +49,10 @@
         <img id="image-three" src="" alt="">
         <figcaption></figcaption>
         </figure>
-      </div>
-      
+      </div>     
     </section>
 
-    <div id="message-team" class="grid-item4" style="background-color: #deb887;">
+    <div id="team-message-container" style="background-color: #deb887;">
       <p>Hello Team! </p>
       <p>
         We need your input! Vote by clicking on one of the three product images displayed. The product with the most votes will determine our next creation! Hurry and cast your vote as there are only 25 voting rounds!
@@ -64,11 +61,10 @@
         Once all votes have been cast results will be displayed on the left hand side of page by clicking 'View Results'.
       </p>
     </div>
-
   </main>
 
-  <footer class="grid-container3">
-    <div class="grid-item7" style="background-color: #ee82ee;">Author: Melodic</div>
+  <footer>
+    <div style="background-color: #ee82ee;">Author: Melodic</div>
   </footer>
 
   <script src="js/app.js"></script>
